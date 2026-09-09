@@ -14,10 +14,10 @@ name = "ccacoserv-cli"
 path = "src/main.rs"
 
 [dependencies]
-coserv-rs = { git = "https://github.com/veraison/coserv-rs", features = ["openssl"] }
+coserv-rs = { git = "https://github.com/veraison/coserv-rs", rev = "15121e8", features = ["openssl"] }
 corim-rs = { git = "https://github.com/veraison/corim-rs" }
 cover = { git = "https://github.com/veraison/cover" }
-veraison-apiclient = { git = "https://github.com/veraison/rust-apiclient", features = [ "disk-caching" ] }
+veraison-apiclient = { git = "https://github.com/veraison/rust-apiclient", rev = "91bb4ac", features = [ "disk-caching" ] }
 serde = { version = "1.0.219", features = ["derive"] }
 serde_json = { version = "1.0.140", features = ["raw_value"] }
 ccatoken = { git = "https://github.com/veraison/rust-ccatoken" }
