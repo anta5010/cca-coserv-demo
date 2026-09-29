@@ -31,7 +31,7 @@ use crate::error::{Error, Result};
 /// Creates and returns a CoSERV query to obtain the reference values that would be needed to appraise the given CCA evidence
 pub fn reference_value_query_from_evidence<'a>(evidence: &Evidence) -> Result<Coserv<'a>> {
     let id = ClassIdTypeChoice::Bytes(TaggedBytes::new(
-        evidence.platform_claims.impl_id.as_slice().into(),
+        evidence.platform_claims.impl_id().as_slice().into(),
     ));
     let cca_fvp_class_map = ClassMapBuilder::new().class_id(id).build()?;
 
@@ -59,7 +59,7 @@ pub fn reference_value_query_from_evidence<'a>(evidence: &Evidence) -> Result<Co
 
 /// Creates and returns a CoSERV query to obtain the trust anchor(s) that would be needed to verify the given CCA evidence
 pub fn trust_anchor_query_from_evidence<'a>(evidence: &Evidence) -> Result<Coserv<'a>> {
-    let ueid = UeidType::new(evidence.platform_claims.inst_id.as_slice().into());
+    let ueid = UeidType::new(evidence.platform_claims.inst_id().as_slice().into());
     let cca_fvp_instance_id = InstanceIdTypeChoice::Ueid(TaggedUeidType::new(ueid));
     let instances: Vec<StatefulInstance> = vec![
         StatefulInstanceBuilder::new()
